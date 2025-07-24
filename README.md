@@ -75,7 +75,7 @@ sequenceDiagram
 > 
 > You can do the diagrams with any program, but perhaps the easiest and the best way to do diagrams is the [Mermaid](https://github.com/mermaid-js/mermaid#sequence-diagram-docs---live-editor) syntax that is now implemented in [GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) Markdown pages!  
 
-## Solution
+## Solution!
 ```mermaid
 sequenceDiagram
 	participant browser
@@ -86,29 +86,34 @@ sequenceDiagram
 	server-->>browser: 302 Found 
 	deactivate server
 
-  Note right of browser: HTTP Status Code 302: (This is a response code from the server which asks the browser to do a redirect or a new HTTP GET request to the address in the header)
+  	Note right of browser: HTTP Status Code 302: (This is a response code from the server which asks the browser to do a redirect or a new HTTP GET request 	to the address in the header)
 
-  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+  	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
 	activate server
 	server-->>browser: notes.html (HTML file)
 	deactivate server
 
-  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
 	activate server
 	server-->>browser: main.css (CSS file) 
 	deactivate server
 
-  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+  	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
 	activate server
 	server-->>browser: main.js (JS file)
 	deactivate server
 
-  Note right of browser: The browser starts executing the JS code which requests the data.json file from the server
+  	Note right of browser: The browser starts executing the JS code which requests the data.json file from the server
 
-  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
 	activate server
 	server->>browser: [{content: “HTML is easy”, date: “2019-05-23”}, …]
 	deactivate server
 
-  Note right of browser: The browser executes the callback function that renders the notes
+  	Note right of browser: The browser executes the callback function that renders the notes
 ```
+
+## Exercise 0.5: Single page app diagram
+> Create a diagram depicting the situation where the user goes to the single-page app version of the notes app at https://studies.cs.helsinki.fi/exampleapp/spa.
+
+## Solution!
