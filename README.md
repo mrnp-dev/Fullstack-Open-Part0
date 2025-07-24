@@ -75,7 +75,7 @@ sequenceDiagram
 > 
 > You can do the diagrams with any program, but perhaps the easiest and the best way to do diagrams is the [Mermaid](https://github.com/mermaid-js/mermaid#sequence-diagram-docs---live-editor) syntax that is now implemented in [GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) Markdown pages!  
 
-## Solution!
+# Solution!
 ```mermaid
 sequenceDiagram
 	participant browser
@@ -103,17 +103,70 @@ sequenceDiagram
 	server-->>browser: main.js (JS file)
 	deactivate server
 
-  	Note right of browser: The browser starts executing the JS code which requests the data.json file from the server
+  	Note over browser: The browser starts executing the JS code which requests the data.json file from the server
 
   	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
 	activate server
 	server->>browser: [{content: “HTML is easy”, date: “2019-05-23”}, …]
 	deactivate server
 
-  	Note right of browser: The browser executes the callback function that renders the notes
+  	Note over browser: The browser executes the callback function that renders the notes
 ```
 
 ## Exercise 0.5: Single page app diagram
 > Create a diagram depicting the situation where the user goes to the single-page app version of the notes app at https://studies.cs.helsinki.fi/exampleapp/spa.
 
-## Solution!
+# Solution!
+```mermaid
+sequenceDiagram
+	participant browser
+	participant server
+
+	browser->>server: GET https://https://studies.cs.helsinki.fi/exampleapp/spa
+	activate server
+	server-->>browser: spa.html (HTML File)
+	deactivate server
+
+	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+	activate server
+	server-->>browser: main.css (CSS File)
+	deactivate server
+
+	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+	activate server
+	server-->>browser: spa.js (JS File)
+	deactivate server
+
+	Note over browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+	activate server
+	server->>browser: [{content: “HTML is easy”, date: “2019-05-23”}, …]
+	deactivate server
+
+	Note over browser: The browser executes the callback function that renders the notes
+```
+
+## Exercise 0.6: New note in Single page app diagram
+> Create a diagram depicting the situation where the user creates a new note using the single-page version of the app.
+>
+> This was the last exercise, and it's time to push your answers to GitHub and mark the exercises as done in the [submission system](https://studies.cs.helsinki.fi/stats/courses/fullstackopen).
+
+# Solution!
+```mermaid
+sequenceDiagram
+	participant browser
+	participant server
+
+	Note Left of browser: The browser pushes the new note data on the existing notes and rerenders only the notes list instead of the entire page
+
+	browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+	activate server
+
+	Note Over browser: The browser sends the new note list as JSON to the server
+
+	server-->>browser: {"message":"note created"}
+	deactivate server
+
+	Note Over server: The server processes the post request and responds with 201 code and new_note_spa.json
+```
